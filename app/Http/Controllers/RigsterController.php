@@ -13,8 +13,10 @@ class RigsterController extends Controller
 {
     public function rigister(request $request)
 {
+$user=User::all();
  $validator=Validator::make($request->all(),[
      'name'=>'required',
+     'type'=>'required',
      'email'=>'required|email',
      'password'=>'required|min:8',
      'c_password'=>'required|same:password'
@@ -23,9 +25,16 @@ class RigsterController extends Controller
  {
      return response()->json(['accesss'=>false,$validator->errors()],401);
  }
+ $item=User::where(['type'=>$request->type])->get();
+ if(count($item)>0)
+ {
+     return response()->json(['success'=>false,'message'=>'sorry you have already admin'],400);
+ }
+
  $input=$request->all();
  $input['password']=Hash::make($input['password']);
- $user=User::create($input);
+    $user=User::create($input);
+
  $token=$user->createToken('mohammed')->accessToken;
  return response()->json(['access'=>true,'message'=>'rigester succssesfly','token is'=>$token],200);
 }

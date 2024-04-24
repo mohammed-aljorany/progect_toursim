@@ -50,8 +50,8 @@ class ProfileController extends Controller
         $input=$request->all();
         $photo=$request->photo;
         $newPhoto=time().$photo->getClientOriginalName();
-        $photo->move('/profile',$newPhoto);
-       $input['photo']=('/profile'.$newPhoto);
+        $photo->move('profile',$newPhoto);
+       $input['photo']=('profile'.$newPhoto);
        $input['first_name']=$user->name;
         $input['user_id']=$id;
         $profile=Profile::create($input);
@@ -80,7 +80,7 @@ class ProfileController extends Controller
         {
             $photo=$request->photo;
             $newPhoto=time().$photo->getClientOriginalName();
-            $photo->move('/profile'.$newPhoto);
+            $photo->move('profile'.$newPhoto);
         }
         if($user->profile==null)
         {
