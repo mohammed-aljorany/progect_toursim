@@ -71,14 +71,3 @@ Route::delete('/profile/del',[ProfileController::class,'destroy']);
 });
 
 
-
-/*-----------car----------*/
-Route::get('/car',[CarController::class,'index']);
-Route::post('/car/store',[CarController::class,'store']);
-Route::put('/car/update',[CarController::class,'update']);
-Route::delete('/car/del',[CarController::class,'destroy']);
-/*-----------AIRLINE----------*/
-Route::get('/airline',[AirlineController::class,'index']);
-Route::post('/airline/store',[AirlineController::class,'store']);
-Route::put('/airline/update',[AirlineController::class,'update']);
-Route::delete('/airline/del',[AirlineController::class,'destroy']);
