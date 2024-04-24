@@ -35,6 +35,7 @@ Route::delete('/profile/del',[ProfileController::class,'destroy']);
     Route::post('/country/store',[CountryController::class,'store']);
     Route::put('/country/update',[CountryController::class,'update']);
     Route::delete('/country/del/{id}',[CountryController::class,'destroy']);
+    Route::get('/country/search/{searchh}',[CountryController::class,'search']);
     /*-----------city----------*/
     Route::get('/city',[CityController::class,'index']);
     Route::get('/city/show/{id}',[CityController::class,'index']);
@@ -71,3 +72,14 @@ Route::delete('/profile/del',[ProfileController::class,'destroy']);
 });
 
 
+
+/*-----------car----------*/
+Route::get('/car',[CarController::class,'index']);
+Route::post('/car/store',[CarController::class,'store']);
+Route::put('/car/update',[CarController::class,'update']);
+Route::delete('/car/del',[CarController::class,'destroy']);
+/*-----------AIRLINE----------*/
+Route::get('/airline',[AirlineController::class,'index']);
+Route::post('/airline/store',[AirlineController::class,'store']);
+Route::put('/airline/update',[AirlineController::class,'update']);
+Route::delete('/airline/del',[AirlineController::class,'destroy']);

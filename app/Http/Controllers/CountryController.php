@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use App\Models\Hotel;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\Controller;
+use App\Models\Place;
 use Illuminate\Http\Request;
+
 use Validator;
 class CountryController extends Controller
 {
@@ -79,4 +83,11 @@ class CountryController extends Controller
         $country=Country::findorfail($id)->delete();
         return response()->json(['access'=>true,'message'=>'delete country done'],200);
     }
+public function search($searchh)
+{
+    $country=Country::all();
+    $place=Place::where('name_place','LIKE','%'.$searchh.'%')->with('country','city')->get();
+    $hotel=Hotel::where('hotel_name','LIKE','%'.$searchh.'%')->with('country','city')->get();
+    return response()->json(['success'=>true,'the search is:'=>$place,$hotel],200);
+}
 }
