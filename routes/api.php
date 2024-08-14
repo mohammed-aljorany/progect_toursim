@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\StripePaymentController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -65,7 +66,8 @@ Route::delete('/profile/del',[ProfileController::class,'destroy']);
     Route::post('/place/favorite',[FavoriteController::class,'store']);
     Route::delete('/place/favorite/{id}',[FavoriteController::class,'destroy']);
 
-
+    /*-------------PAYMENT-----------*/
+    Route::post('/payment',[StripePaymentController::class,'stripe']);
 
 
 
@@ -73,13 +75,13 @@ Route::delete('/profile/del',[ProfileController::class,'destroy']);
 
 
 
-/*-----------car----------*/
+/*-----------car----------
 Route::get('/car',[CarController::class,'index']);
 Route::post('/car/store',[CarController::class,'store']);
 Route::put('/car/update',[CarController::class,'update']);
-Route::delete('/car/del',[CarController::class,'destroy']);
-/*-----------AIRLINE----------*/
+Route::delete('/car/del',[CarController::class,'destroy']); */
+/*-----------AIRLINE----------*//*
 Route::get('/airline',[AirlineController::class,'index']);
 Route::post('/airline/store',[AirlineController::class,'store']);
 Route::put('/airline/update',[AirlineController::class,'update']);
-Route::delete('/airline/del',[AirlineController::class,'destroy']);
+Route::delete('/airline/del',[AirlineController::class,'destroy']);*/

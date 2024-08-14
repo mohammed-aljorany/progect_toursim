@@ -44,7 +44,7 @@ class FavoriteController extends Controller
             $input=$request->all();
             $input['user_id']=$id;
             $favorite = Favorite::create($input);
-            return response()->json(['success' => true, 'favorite product' => $favorite], 200);
+            return response()->json(['success' => true, 'message' => 'add place done'], 200);
 
         }}
 
@@ -59,14 +59,7 @@ class FavoriteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Favorite $favorite)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Favorite $favorite)
     {
         //
